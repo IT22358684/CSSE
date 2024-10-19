@@ -59,7 +59,7 @@ function AdminLogin() {
         </div>
         <div className="login">
           {/* <img src={logofull} alt='loginimage' /> */}
-          <p className="wel">Welcome to FitMe Admin Portal</p>
+          <p className="wel">Welcome</p>
           <div className="loginmid">
             <form className="login" onSubmit={loginAdmin}>
               <div className="username">
