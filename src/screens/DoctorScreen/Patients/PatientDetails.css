@@ -1,0 +1,92 @@
+/* Main container for patient details */
+.patient-container {
+    display: flex;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    height: 100vh;
+    border-right: 1px solid #ddd;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #0c405e; /* Bootstrap primary color */
+}
+
+.sidebar p {
+    margin: 5px 0;
+}
+
+/* Button group styles */
+.button-group {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+   
+}
+
+.button-home {
+    background-color: #06466b;
+    border-radius: 0%;
+}
+
+.nav-button {
+    margin-bottom: 10px; /* Space between buttons */
+    color: #333; /* Dark color for text */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-button:hover {
+    background-color: #d0d3d6; /* Bootstrap primary color on hover */
+    color: white; /* Change text color on hover */
+}
+
+/* Content area styles */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #e1e2e2; /* White background for content */
+}
+
+/* Table styles */
+.table-container {
+    margin: 20px;
+}
+
+.patient-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.patient-table th, .patient-table td {
+    padding: 10px;
+    border: 1px solid #ddd; /* Light border for table cells */
+    text-align: left; /* Align text to the left */
+}
+
+.patient-table th {
+    background-color: #f2f2f2; /* Light gray background for header */
+    color: #104150; /* Bootstrap primary color for header text */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .patient-container {
+        flex-direction: column; /* Stack on smaller screens */
+    }
+
+    .sidebar {
+        width: 100%; /* Full width on mobile */
+        height: auto; /* Allow height to be dynamic */
+    }
+
+    .content {
+        padding: 10px; /* Less padding on mobile */
+    }
+}

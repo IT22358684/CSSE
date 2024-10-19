@@ -1,0 +1,87 @@
+/* Overall container styles */
+h1 {
+    text-align: center; /* Center the title */
+    margin: 20px 0;
+    font-size: 2rem; /* Increase font size for better visibility */
+    color: #0c405e; /* Dark blue color */
+}
+
+/* Scrollable card container */
+.scrollable-container {
+    max-height: 400px;
+    overflow-y: scroll;
+    padding: 10px;
+    background-color: #f9f9f9; /* Light gray background for better contrast */
+    border-radius: 8px; /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+}
+
+/* Card styles */
+.card {
+    margin-bottom: 15px;
+    cursor: pointer;
+    border: 1px solid #ddd; /* Light border for cards */
+    border-radius: 8px; /* Rounded corners for cards */
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth transitions */
+    background-color: white; /* White background for cards */
+}
+
+/* Hover effect for cards */
+.card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+    background-color: #f0f0f0; /* Slightly darker background on hover */
+}
+
+/* Card title and text styles */
+.card-title {
+    font-size: 1.25rem; /* Increase font size */
+    font-weight: bold; /* Bold font weight */
+    color: #104150; /* Dark teal color */
+}
+
+.card-text {
+    font-size: 1rem; /* Set a standard font size */
+    color: #555; /* Dark gray text color */
+}
+
+/* Input group styles */
+.mb-3 {
+    width: 100%; /* Set the input group to full width */
+    max-width: 600px; /* Optional: Set a maximum width if desired */
+    margin: 20px auto; /* Center the input group */
+}
+
+/* Search input styles */
+input {
+    border-radius: 5px; /* Rounded corners for input */
+    border: 1px solid #ccc; /* Light border for input */
+    padding: 10px; /* Padding for better touch target */
+    width: 100%; /* Make the input take full width of the group */
+}
+
+/* Add focus effect on input */
+input:focus {
+    border-color: #0c405e; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(12, 64, 94, 0.5); /* Soft shadow on focus */
+}
+
+/* Modal styles */
+.modal-content {
+    border-radius: 8px; /* Rounded corners for modal */
+}
+
+.modal-header {
+    background-color: #0c405e; /* Dark blue background */
+    color: white; /* White text color */
+}
+
+.modal-title {
+    margin: 0; /* Remove default margin */
+}
+
+/* No patients message styles */
+.no-patients-message {
+    text-align: center; /* Center the message */
+    margin: 20px 0; /* Add some margin */
+}
