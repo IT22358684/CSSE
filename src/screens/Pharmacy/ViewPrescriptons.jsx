@@ -59,7 +59,7 @@ const IssuedPrescriptions = () => {
                     {issuedPrescriptions.map((prescription) => (
                         <tr key={prescription.id} onClick={() => handlePrescriptionClick(prescription)}>
                             <td>{prescription.patientName}</td>
-                            <td>{prescription.healthCardNumber}</td>
+                            <td>{prescription.patientId}</td>
                             <td>{new Date(prescription.date).toLocaleDateString()}</td>
                             <td style={{textAlign: 'right' }}>Rs. {prescription.totalPrice}</td>
                         </tr>
@@ -76,7 +76,7 @@ const IssuedPrescriptions = () => {
                             <strong>Patient Name:</strong> {selectedPrescription.patientName}
                         </div>
                         <div>
-                            <strong>Health Card Number:</strong> {selectedPrescription.healthCardNumber}
+                            <strong>Health Card Number:</strong> {selectedPrescription.patientId}
                         </div>
                         <div>
                             <strong>Issued Date:</strong> {new Date(selectedPrescription.date).toLocaleDateString()}
@@ -98,7 +98,7 @@ const IssuedPrescriptions = () => {
                                 {selectedPrescription.medications && selectedPrescription.medications.map((med, index) => (
                                     <tr key={index}>
                                         <td>{med.name}</td>
-                                        <td>{med.prescribedDosage}</td>
+                                        <td>{med.prescribedDosage} mg</td>
                                         <td>{med.unitPrice}</td>
                                         <td>{med.totalPrice}</td>
                                     </tr>

@@ -12,7 +12,7 @@ const PatientPrescriptions = () => {
     const [selectedMedications, setSelectedMedications] = useState([]); // Store medications for selected date
     const [patientName, setPatientName] = useState(''); // State to hold patient name
     const [patientAge, setPatientAge] = useState(''); // State to hold patient age
-    // const [healthCardNumber, setHealthCardNumber] = useState(''); // State to hold patient age
+    const [patientId, setpatientId] = useState(''); // State to hold patient age
     const [billDetails, setBillDetails] = useState(null); // State to hold bill details
     const [patientExists, setPatientExists] = useState(true); // Default true, assuming it exists initially
     const [warning, setWarning] = useState('');
@@ -32,7 +32,7 @@ const PatientPrescriptions = () => {
 
                     setPatientName(patientData.Name);
                     setPatientAge(patientData.Age);
-                    // setHealthCardNumber(patientData.healthCardNumber);
+                    setpatientId(patientData.patientId);
 
                     if (Array.isArray(patientData.medications)) {
                         setAllMedications(patientData.medications);
@@ -118,7 +118,7 @@ const PatientPrescriptions = () => {
             const bill = {
                 patientName: patientName,
                 patientAge: patientAge,
-                // healthCardNumber: healthCardNumber,
+                patientId: patientId,
                 date: selectedMedications[0].date,
                 medications: billItems,
                 totalPrice: totalBillPrice.toFixed(2), // Format total price to 2 decimal places
@@ -133,7 +133,7 @@ const PatientPrescriptions = () => {
         try {
             const paymentData = {
                 name: patientName,
-                // healthCardNumber: healthCardNumber, // Assuming id is the health card number
+                patientId: patientId, // Assuming id is the health card number
                 date: new Date().toLocaleDateString(), // Current date
                 totalValue: billDetails.totalPrice, // Total bill value
                 description: 'pharmacy payment through app',
@@ -155,7 +155,7 @@ const PatientPrescriptions = () => {
         try {
             const paymentData = {
                 name: patientName,
-                // healthCardNumber: healthCardNumber, // Assuming id is the health card number
+                patientId: patientId, // Assuming id is the health card number
                 date: new Date().toLocaleDateString(), // Current date
                 totalValue: billDetails.totalPrice, // Total bill value
                 description: 'pharmacy payment cash',
@@ -195,7 +195,7 @@ const handleIssueMedicine = async () => {
         const issuedPrescriptionData = {
             patientName: patientName,
             // patientAge: patientAge,
-            // healthCardNumber: healthCardNumber, // Assuming id is the health card number
+            patientId: patientId, // Assuming id is the health card number
             date: new Date().toLocaleDateString(), // Save the current date
             totalPrice: billDetails.totalPrice, // Save the total price of the bill
             prescriptionId: billDetails.prescriptionId, // Save the unique prescription ID
@@ -275,7 +275,7 @@ const handleIssueMedicine = async () => {
                 <div className="bill-details">
                     <div className="bill-header">
                         <div>Name: {billDetails.patientName}</div>
-                        {/* <div>Health Card Number : {billDetails.healthCardNumber}</div> */}
+                        <div>Health Card Number : {billDetails.patientId}</div>
                         <div>Age: {billDetails.patientAge}</div>
                         <div>Date: {new Date().toLocaleDateString()}</div>
                         <div>Prescription ID: {billDetails.prescriptionId}</div> {/* Display Prescription ID */}
@@ -293,7 +293,7 @@ const handleIssueMedicine = async () => {
                             {billDetails.medications.map((med, idx) => (
                                 <tr key={idx}>
                                     <td>{med.name}</td>
-                                    <td>{med.dosage}</td>
+                                    <td>{med.prescribedDosage} mg</td>
                                     <td style={{ textAlign: 'right' }}> Rs. {med.unitPrice}</td>
                                     <td style={{ textAlign: 'right' }}> Rs. {med.totalPrice}</td>
                                 </tr>

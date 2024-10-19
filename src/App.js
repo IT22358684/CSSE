@@ -14,15 +14,6 @@ import AddMedicine from './screens/Pharmacy/AddMedicine';
 import ViewInventory from './screens/Pharmacy/ViewInventory';
 import PatientPrescriptions from './screens/Pharmacy/PatientDetails';
 
-import DoctorHome from './screens/DoctorScreen/DoctorHome/doctorHome'
-import Patients from './screens/DoctorScreen/Patients/patients'
-import ConsultationForm from './screens/DoctorScreen/Consultation/ConsultationForm'; // Correct import path
-import Medications from './screens/DoctorScreen/Medications/medications'
-import File from './screens/DoctorScreen/PatientFiles/file'
-import Appoinments from './screens/DoctorScreen/Appoinment/appoinments'
-import DoctorNav from './screens/DoctorScreen/DoctorNav'
-import PatientDetails from './screens/DoctorScreen/Patients/patientDetails'
-
 import DoctorDashboard from './screens/Doctor/DoctorDashboard';
 
 function App() {
@@ -39,16 +30,6 @@ function App() {
         <Route path="add-medicine" element={<AddMedicine />} />
         <Route path="doctorDashboard" element={<DoctorDashboard />} />
         <Route path="/PatientPrescriptions/:id" element={<PatientPrescriptions />} />
-
-        <Route path="/doctorHome" element={<DoctorHome />} />
-        <Route path="/patients" element={<Patients />} />
-        <Route path="/appointments" element={<Appoinments />} />
-        <Route path="/doctoNav" element={<DoctorNav />} />
-        <Route path="/patientDetails/:id" element={<PatientDetails />} />
-        <Route path="/consultation/:id" element={<ConsultationForm />} />
-        <Route path="/medications/:id" element={<Medications />} />
-        <Route path="/files/:id" element={<File />} />
-
       </Routes>
     </Router>
   );

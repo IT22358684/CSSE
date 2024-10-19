@@ -38,7 +38,7 @@ function Dashboard() {
     setPatientAge(null);
     try {
       const patientRef = collection(db, 'Patients');
-      const q = query(patientRef, where('Name', '==', healthCardNumber)); // Change query to search by health card number
+      const q = query(patientRef, where('patientId', '==', healthCardNumber)); // Change query to search by health card number
       const querySnapshot = await getDocs(q);
 
       if (!querySnapshot.empty) {
@@ -96,7 +96,7 @@ function Dashboard() {
           <div className="patient-details">
             <h2>PATIENT DETAILS</h2>
             <p><strong>Name</strong>: {patientData.Name}</p>
-            <p><strong>Health card number</strong>: {patientData.healthcardNo}</p>
+            <p><strong>Health card number</strong>: {patientData.patientId}</p>
             <p><strong>Age</strong>: {patientAge ? patientAge : 'N/A'}</p> {/* Display calculated age */}
             <p><strong>Gender</strong>: {patientData.gender}</p>
             <button 
