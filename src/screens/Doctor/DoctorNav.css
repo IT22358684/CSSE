@@ -1,0 +1,44 @@
+/* DoctorNav.css */
+
+.doctor-nav {
+  background-color: #0e2b50; /* Teal background */
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.doctor-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* Center the navigation items */
+}
+
+.doctor-nav ul li {
+  margin: 0 15px; /* Add margin between the list items */
+}
+
+.doctor-nav ul li a {
+  color: white; /* White text for contrast */
+  text-decoration: none;
+  padding: 12px 20px; /* Padding for touch target */
+  font-size: 1.2rem; /* Increased font size for better readability */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.doctor-nav ul li a:hover {
+  background-color: #364b6b; /* Darker teal on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Additional responsive styles */
+@media (max-width: 768px) {
+  .doctor-nav ul {
+      flex-direction: column; /* Stack items on smaller screens */
+  }
+
+  .doctor-nav ul li {
+      margin: 10px 0; /* Space out items vertically */
+  }
+}

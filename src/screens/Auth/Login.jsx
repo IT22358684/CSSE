@@ -32,7 +32,7 @@ function AdminLogin() {
         if (userRole === 'admin') {
           navigate('/adminDashboard');
         } else if (userRole === 'doctor') {
-          navigate('/doctorDashboard');
+          navigate('/doctorHome');
         } else if (userRole === 'pharmacist') {
           navigate('/dashboard');
         } else {

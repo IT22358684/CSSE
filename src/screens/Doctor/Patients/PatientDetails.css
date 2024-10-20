@@ -1,0 +1,119 @@
+/* General container styling for patient details */
+.patient-details-container {
+    font-family: 'Poppins', sans-serif; /* Updated font family */
+    background-color: #edf2f7; /* Light blue background */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Patient details section */
+.patient-details {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+/* Sidebar styling */
+.patient-sidebar {
+    width: 260px;
+    padding: 20px;
+    background-color: #0c4b79; /* Dark blue sidebar */
+    color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.patient-sidebar h2 {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.patient-sidebar p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #ffffffd9; /* Softer white text */
+}
+
+/* Button group in sidebar */
+.patient-button-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.patient-button {
+    background-color: #06466b;
+    border: none;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.patient-button:hover {
+    background-color: #076ea9;
+    color: white;
+}
+
+/* Main content area */
+.patient-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f7fafc;
+    overflow-y: auto;
+}
+
+/* Table container styling */
+.patient-table-container {
+    margin: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.patient-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.patient-table th, .patient-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.patient-table th {
+    background-color: #f0f4f8;
+    color: #0c4b79; /* Dark blue text for header */
+}
+
+.patient-table td {
+    color: #333; /* Darker text for content */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .patient-details {
+        flex-direction: column;
+    }
+
+    .patient-sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .patient-content {
+        padding: 10px;
+    }
+
+    .patient-table-container {
+        margin: 10px;
+    }
+}

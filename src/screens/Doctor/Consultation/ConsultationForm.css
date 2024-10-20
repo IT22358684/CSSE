@@ -1,0 +1,97 @@
+body {
+    font-family: 'Helvetica Neue', sans-serif; /* New font family */
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.consultation-form {
+    width: 80%;
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.consultation-form:hover {
+    transform: scale(1.02); /* Subtle hover effect */
+}
+
+.form-label {
+    display: block;
+    margin-top: 15px;
+    font-size: 15px;
+    color: #555;
+}
+
+.form-input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+}
+
+textarea:focus,
+.form-input:focus {
+    border-color: #3498db; /* Change border color on focus */
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: #3498db; /* Updated button color */
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+button:hover {
+    background-color: #2980b9; /* Darker button color on hover */
+    transform: translateY(-2px); /* Lift button on hover */
+}
+
+button:active {
+    transform: translateY(0); /* Reset button position */
+}
+
+.error-message {
+    color: #e74c3c; /* Error message color */
+    text-align: center;
+}
+
+.success-message {
+    color: #2ecc71; /* Success message color */
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .consultation-form {
+        width: 90%;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}

@@ -49,7 +49,6 @@ function RegisterUser() {
       <div className="mainlogin">
         <div className="loginphoto"></div>
         <div className="login">
-          <p className="wel">Welcome to FitMe Admin Portal</p>
           <div className="loginmid">
             <form onSubmit={registerAdmin}>
               <div className="username">
@@ -102,14 +101,14 @@ function RegisterUser() {
               </div>
               <div className="username">
                 <label htmlFor="userRole" className="logintxt">USER ROLE</label><br/>
-                <select id="userRole" name="userRole" required onChange={(e) => setData({...data, userRole: e.target.value})}>
+                <select id="userRole" name="userRole" required onChange={(e) => setData({...data, userRole: e.target.value})} className='form-control'>
                                 <option value="">Select</option>
                                 <option value="doctor">Doctor</option>
                                 <option value="pharmacist">Pharmacist</option>
                             </select>
               </div>
               <br/>
-              <button type="submit" className='btnloging'> SIGN UP</button>
+              <button type="submit" className='btnloging'> Register</button>
             </form>
           </div>
         </div>

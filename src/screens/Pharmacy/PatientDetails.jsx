@@ -11,7 +11,7 @@ const PatientPrescriptions = () => {
     const [loading, setLoading] = useState(true);
     const [selectedMedications, setSelectedMedications] = useState([]); // Store medications for selected date
     const [patientName, setPatientName] = useState(''); // State to hold patient name
-    const [patientAge, setPatientAge] = useState(''); // State to hold patient age
+    // const [patientAge, setPatientAge] = useState(''); // State to hold patient age
     const [patientId, setpatientId] = useState(''); // State to hold patient age
     const [billDetails, setBillDetails] = useState(null); // State to hold bill details
     const [patientExists, setPatientExists] = useState(true); // Default true, assuming it exists initially
@@ -31,7 +31,7 @@ const PatientPrescriptions = () => {
                     //console.log("Patient document:", patientData);
 
                     setPatientName(patientData.Name);
-                    setPatientAge(patientData.Age);
+                    // setPatientAge(patientData.Age);
                     setpatientId(patientData.patientId);
 
                     if (Array.isArray(patientData.medications)) {
@@ -117,7 +117,7 @@ const PatientPrescriptions = () => {
             
             const bill = {
                 patientName: patientName,
-                patientAge: patientAge,
+                // patientAge: patientAge,
                 patientId: patientId,
                 date: selectedMedications[0].date,
                 medications: billItems,
@@ -137,7 +137,7 @@ const PatientPrescriptions = () => {
                 date: new Date().toLocaleDateString(), // Current date
                 totalValue: billDetails.totalPrice, // Total bill value
                 description: 'pharmacy payment through app',
-                status: 'not paid', // Initial status for app payment
+                status: 'Pending', // Initial status for app payment
                 prescriptionId: billDetails.prescriptionId
             };
 
@@ -159,7 +159,7 @@ const PatientPrescriptions = () => {
                 date: new Date().toLocaleDateString(), // Current date
                 totalValue: billDetails.totalPrice, // Total bill value
                 description: 'pharmacy payment cash',
-                status: 'paid', // Directly mark as paid
+                status: 'Completed', // Directly mark as paid
                 prescriptionId: billDetails.prescriptionId
             };
 
@@ -182,7 +182,7 @@ const handleIssueMedicine = async () => {
 
         if (paymentRecord) {
             const paymentData = paymentRecord.data();
-            if (paymentData.status !== 'paid') {
+            if (paymentData.status !== 'Completed') {
                 alert("Payment has not been made. Please complete the payment before issuing medicines.");
                 return; // Exit the function if payment is not completed
             }
@@ -276,7 +276,7 @@ const handleIssueMedicine = async () => {
                     <div className="bill-header">
                         <div>Name: {billDetails.patientName}</div>
                         <div>Health Card Number : {billDetails.patientId}</div>
-                        <div>Age: {billDetails.patientAge}</div>
+                        {/* <div>Age: {billDetails.patientAge}</div> */}
                         <div>Date: {new Date().toLocaleDateString()}</div>
                         <div>Prescription ID: {billDetails.prescriptionId}</div> {/* Display Prescription ID */}
                     </div>

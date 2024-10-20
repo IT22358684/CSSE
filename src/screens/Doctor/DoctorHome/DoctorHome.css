@@ -1,0 +1,114 @@
+/* General layout */
+.doctor-home-container {
+    background-color: #f5f8fc; /* Light neutral background */
+    padding: 40px;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif; /* Modern and clean font */
+    color: #333;
+}
+
+.doctor-home-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.doctor-home-title {
+    font-size: 36px;
+    color: #1e3d59; /* Deep modern blue */
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.doctor-home-welcome {
+    font-size: 18px;
+    color: #6a7d91; /* Muted blue-gray for a softer look */
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Cards container */
+.doctor-home-cards-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap;
+    align-items: stretch; /* Ensure the cards are aligned vertically */
+}
+
+/* Card styling */
+.doctor-home-card {
+    background-color: #ffffff; /* Clean white card background */
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 250px;
+}
+
+.doctor-home-card:hover {
+    transform: translateY(-8px); /* Smooth hover effect */
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.doctor-home-card-title {
+    font-size: 24px;
+    color: #1e3d59;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-align: left;
+}
+.doctor-home-card-title2 {
+    font-size: 24px;
+    color: #f6f7f8;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+.doctor-home-card-description {
+    font-size: 16px;
+    color: #5f6f81;
+    margin-bottom: 25px;
+}
+
+.doctor-home-appointments-list {
+    font-size: 16px;
+    color: #4a4a4a;
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.doctor-home-appointments-list li {
+    background-color: #edf4ff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: #3b5166;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Calendar styling */
+.doctor-home-calendar-card {
+    flex-basis: 100%; /* Full-width for the calendar */
+    background-color: #051a36;
+    padding: 20px;
+    border-radius: 0px;
+
+}
+
+.doctor-home-calendar {
+    width: 100%;
+    border-radius: 0px;
+    border: none;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.08);
+    background-color: #051a36;
+    color: #ffffff;
+}

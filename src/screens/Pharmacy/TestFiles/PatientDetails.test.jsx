@@ -1,16 +1,17 @@
+// testCases for PatientDetails.js
+
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import PatientPrescriptions from './PatientDetails'; // Adjust the path as necessary
+import PatientPrescriptions from '../PatientDetails'; 77777777
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { doc, getDoc, getDocs } from 'firebase/firestore';
-import { db } from '../firebase'; // Adjust the path as necessary
+import { getDoc, getDocs } from 'firebase/firestore';
 
 jest.mock('firebase/firestore');
 
-// Mock patient data
 const mockPatientData = {
     exists: () => true,
     data: () => ({
         Name: 'John Doe',
+        patientId: 'patient123',
         medications: [
             { date: '2023-10-10', medications: [{ label: 'Aspirin', dosage: '500 mg' }] },
             { date: '2023-10-15', medications: [{ label: 'Paracetamol', dosage: '1000 mg' }] }
@@ -18,13 +19,11 @@ const mockPatientData = {
     })
 };
 
-// Mock empty patient data (for negative cases)
 const mockEmptyPatientData = {
     exists: () => false
 };
 
-// Mock valid medication data
-const mockMedicineDocs = [
+const mockMedicineData = [
     { data: () => ({ medicineName: 'Aspirin', price: '50', dosage: '500' }) }
 ];
 
@@ -61,10 +60,30 @@ describe('PatientPrescriptions Component', () => {
         expect(await screen.findByText(/Patient document does not exist./)).toBeInTheDocument(); // Check patient name
     });
 
-    // Test 3: Generates bill for selected medications
+    // Test 3: displays medications for selected date
+    test('displays medications for selected date', async () => {
+        getDoc.mockResolvedValue(mockPatientData); // Mock Firestore to return no patient data
+
+        render(
+            <MemoryRouter initialEntries={['/prescriptions/patient123']}>
+                <Routes>
+                    <Route path="/prescriptions/:id" element={<PatientPrescriptions />} />
+                </Routes>
+            </MemoryRouter>
+        );
+
+        await waitFor(() => {
+            fireEvent.click(screen.getByText(/10\/10\/2023/i));
+        });
+
+        expect(screen.getByText(/Medications for 10\/10\/2023/i)).toBeInTheDocument();
+        expect(screen.getByText(/Aspirin - 500 mg/i)).toBeInTheDocument();
+    });
+
+    // Test 4: Generates bill for selected medications
     test('generates bill for selected medications', async () => {
         getDoc.mockResolvedValue(mockPatientData); // Mock Firestore patient data
-        getDocs.mockResolvedValue({ docs: mockMedicineDocs }); // Mock Firestore medicines collection
+        getDocs.mockResolvedValue({ docs: mockMedicineData }); // Mock Firestore medicines collection
 
         const { container } = render(
             <MemoryRouter initialEntries={['/prescriptions/patient123']}>
@@ -95,7 +114,7 @@ describe('PatientPrescriptions Component', () => {
         expect(totalPriceText).toBe('Rs. 50.00');
     });
 
-    // Test 4: Shows warning when invalid medication data is found
+    // Test 5: Shows warning when invalid medication data is found
     test('shows warning when invalid medication data is found', async () => {
         const mockInvalidPatientData = {
             exists: () => true,
@@ -127,7 +146,7 @@ describe('PatientPrescriptions Component', () => {
         expect(await screen.findByText(/Invalid data for medication: InvalidMed/i)).toBeInTheDocument(); // Check for invalid medication warning
     });
 
-    // Test 5: Displays loading message while fetching data
+    // Test 6: Displays loading message while fetching data
     test('displays loading message while fetching data', () => {
         getDoc.mockReturnValue(new Promise(() => { })); // Simulate loading state
 
@@ -142,9 +161,15 @@ describe('PatientPrescriptions Component', () => {
         expect(screen.getByText(/Loading medications/i)).toBeInTheDocument(); // Loading message should be shown
     });
 
-    test('does not display loading message after data is loaded', async () => {
-        getDoc.mockResolvedValue(mockPatientData); // Mock resolved patient data
-    
+    // Test 7: Handles cash payment
+    test('handles cash payment', async () => {
+        getDoc.mockResolvedValue(mockPatientData); // Mock Firestore patient data
+        getDocs.mockResolvedValue({ docs: mockMedicineData }); // Mock Firestore medicines collection
+
+        // Mock window.alert to track if it's called
+        const mockAlert = jest.spyOn(window, 'alert').mockImplementation(() => { });
+
+        // Render the component
         render(
             <MemoryRouter initialEntries={['/prescriptions/patient123']}>
                 <Routes>
@@ -152,11 +177,71 @@ describe('PatientPrescriptions Component', () => {
                 </Routes>
             </MemoryRouter>
         );
-    
-        // Wait for the loading message to disappear
+
+        fireEvent.click(await screen.findByText('10/10/2023')); // Select date
+        fireEvent.click(screen.getByText(/Generate Bill/i)); // Generate bill
+
+        // Use findAllByText to get all instances of Rs. 50.00
+        const priceElements = await screen.findAllByText(/Rs. 50.00/i);
+
+        // Assert that the total price element is displayed
+        expect(priceElements[1]).toBeInTheDocument(); // Assuming the second element is the total
+
+        // Ensure the "Pay by Cash" button is enabled
+        const payByCashButton = screen.getByText(/Pay by Cash/i);
+        expect(payByCashButton).not.toBeDisabled(); // Ensure it's enabled before clicking
+
+        fireEvent.click(payByCashButton); // Click 'Pay by Cash'
+
+        // Check if the alert for payment completion is triggered
         await waitFor(() => {
-            expect(screen.queryByText(/Loading medications/i)).not.toBeInTheDocument(); // Check that loading message is gone
+            expect(mockAlert).toHaveBeenCalledWith('Payment completed with cash.');
         });
+
+        // Restore the original window.alert behavior after the test
+        mockAlert.mockRestore();
     });
-    
+
+    // Test 8: Handles payment through app
+    test('handles payment through app', async () => {
+        getDoc.mockResolvedValue(mockPatientData); // Mock Firestore patient data
+        getDocs.mockResolvedValue({ docs: mockMedicineData }); // Mock Firestore medicines collection
+
+        // Mock window.alert to track if it's called
+        const mockAlert = jest.spyOn(window, 'alert').mockImplementation(() => { });
+
+        // Render the component
+        render(
+            <MemoryRouter initialEntries={['/prescriptions/patient123']}>
+                <Routes>
+                    <Route path="/prescriptions/:id" element={<PatientPrescriptions />} />
+                </Routes>
+            </MemoryRouter>
+        );
+
+        fireEvent.click(await screen.findByText('10/10/2023')); // Select date
+        fireEvent.click(screen.getByText(/Generate Bill/i)); // Generate bill
+
+        // Use findAllByText to get all instances of Rs. 50.00
+        const priceElements = await screen.findAllByText(/Rs. 50.00/i);
+
+        // Assert that the total price element is displayed
+        expect(priceElements[1]).toBeInTheDocument(); // Assuming the second element is the total
+
+        // Ensure the "Pay by Cash" button is enabled
+        const payButton = screen.getByText(/Pay through App/i);
+        expect(payButton).not.toBeDisabled(); // Ensure it's enabled before clicking
+
+        fireEvent.click(payButton); // Click 'Pay by Cash'
+
+        // Check if the alert for payment completion is triggered
+        await waitFor(() => {
+            expect(mockAlert).toHaveBeenCalledWith('Payment directed to app.');
+        });
+
+        // Restore the original window.alert behavior after the test
+        mockAlert.mockRestore();
+    });
+
+
 });

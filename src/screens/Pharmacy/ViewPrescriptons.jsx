@@ -69,8 +69,8 @@ const IssuedPrescriptions = () => {
 
             {/* Modal for Prescription Details */}
             {modalOpen && selectedPrescription && (
-                <div className="modal-overlay">
-                    <div className="modal-content">
+                <div className="modal-overlay1">
+                    <div className="modal-content1">
                         <h3 className="topic">Prescription Details</h3>
                         <div>
                             <strong>Patient Name:</strong> {selectedPrescription.patientName}
@@ -85,7 +85,7 @@ const IssuedPrescriptions = () => {
                             <strong>Total Price:</strong> Rs. {selectedPrescription.totalPrice}
                         </div>
                         <h4  className='topic'>Medications</h4>
-                        <table className="medications-table">
+                        <table className="bill-table">
                             <thead>
                                 <tr>
                                     <th>Medicine Name</th>

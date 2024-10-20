@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'); /* Importing a new font family */
+
+.admin-dashboard {
+    font-family: 'Roboto', sans-serif; /* Change font family */
+    padding: 1rem;    /* Add padding to the dashboard */
+    background-color: #f4f4f9; /* Light gray background for contrast */
+}
+
+.navbar {
+    background-color: #07192c; /* Dark blue color for the navbar */
+    padding: 1rem;
+    border-radius: 0px; /* Rounded corners for the navbar */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    display: flex; /* Use flexbox for layout */
+    justify-content: flex-end; /* Align links to the right */
+}
+
+.nav-list {
+    list-style: none;
+    display: flex; /* Use flexbox for horizontal alignment */
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
+}
+
+.nav-item {
+    margin-left: 20px; /* Add space between nav items */
+}
+
+.nav-link {
+    color: white; /* Link color */
+    text-decoration: none;
+    font-weight: 700; /* Bold links */
+    padding: 0.5rem 1rem; /* Padding for the links */
+    border-radius: 5px; /* Rounded corners for links */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and color */
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Subtle hover effect */
+    color: #ffffff; /* Maintain white text on hover */
+}
+
+.add-user-btn {
+    margin-top: 2rem; /* Spacing above the button */
+    text-align: center; /* Center align the button */
+}
+
+.add-user-btn .btn {
+    background-color: #28a745; /* Green color for the button */
+    border: none; /* Remove border */
+    color: white; /* Button text color */
+    padding: 0.75rem 1.5rem; /* Padding for the button */
+    border-radius: 5px; /* Rounded corners for the button */
+    font-size: 1rem; /* Font size for button text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions for background color and scaling */
+}
+
+.add-user-btn .btn:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: scale(1.05); /* Slight scale effect on hover */
+}

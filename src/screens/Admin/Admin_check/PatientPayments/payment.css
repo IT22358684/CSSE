@@ -1,0 +1,106 @@
+/* Existing styles for the table */
+.payment-review-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .payment-review-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .payment-review-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .payment-review-table th, .payment-review-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .payment-review-table th {
+    background-color: #092542;
+    color: white;
+  }
+  
+  .payment-review-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .payment-review-table .status-pending {
+    color: #ff9800;
+    font-weight: bold;
+  }
+  
+  .payment-review-table .status-confirmed {
+    color: #4caf50;
+    font-weight: bold;
+  }
+  
+  .payment-review-table .status-rejected {
+    color: #f44336;
+    font-weight: bold;
+  }
+  
+  /* Modal styles */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 15px;
+  }
+  
+  .modal-content select {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .modal-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .update-button, .cancel-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .update-button {
+    background-color: #007BFF;
+    color: white;
+  }
+  
+  .cancel-button {
+    background-color: #f44336;
+    color: white;
+  }
+  

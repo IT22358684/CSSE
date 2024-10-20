@@ -14,7 +14,18 @@ import AddMedicine from './screens/Pharmacy/AddMedicine';
 import ViewInventory from './screens/Pharmacy/ViewInventory';
 import PatientPrescriptions from './screens/Pharmacy/PatientDetails';
 
-import DoctorDashboard from './screens/Doctor/DoctorDashboard';
+import AdminPayments from './screens/Admin/Admin_check/PatientPayments/Payment'
+import ClaimInsuarance from './screens/Admin/Admin_check/InsuaranceClaim/Claim'
+import Messages from './screens/Admin/Admin_check/DoctorMessages/messages'
+
+import DoctorHome from './screens/Doctor/DoctorHome/doctorHome'
+import Patients from './screens/Doctor/AllPatients/patients'
+import ConsultationForm from './screens/Doctor/Consultation/ConsultationForm'; // Correct import path
+import Medications from './screens/Doctor/Medications/medications'
+import File from './screens/Doctor/PatientFiles/file'
+import Appoinments from './screens/Doctor/Appoinment/appoinments'
+import DoctorNav from './screens/Doctor/DoctorNav'
+import PatientDetails from './screens/Doctor/Patients/patientDetails'
 
 function App() {
   return (
@@ -28,8 +39,20 @@ function App() {
         <Route path="ViewPrescriptions" element={<ViewPrescriptions />} />
         <Route path="ViewInventory" element={<ViewInventory />} />
         <Route path="add-medicine" element={<AddMedicine />} />
-        <Route path="doctorDashboard" element={<DoctorDashboard />} />
         <Route path="/PatientPrescriptions/:id" element={<PatientPrescriptions />} />
+        <Route path="/doctorHome" element={<DoctorHome />} />
+        <Route path="/patients" element={<Patients />} />
+        <Route path="/appointments" element={<Appoinments />} />
+        <Route path="/doctoNav" element={<DoctorNav />} />
+        <Route path="/patientDetails/:id" element={<PatientDetails />} />
+        <Route path="/consultation/:id" element={<ConsultationForm />} />
+        <Route path="/medications/:id" element={<Medications />} />
+        <Route path="/files/:id" element={<File />} />
+
+        <Route path="/adminPayments" element={<AdminPayments />} />
+        <Route path="/claim" element={<ClaimInsuarance />} />
+        <Route path="/messages" element={<Messages />} />
+
       </Routes>
     </Router>
   );

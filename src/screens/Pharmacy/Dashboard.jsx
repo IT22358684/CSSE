@@ -9,7 +9,7 @@ function Dashboard() {
   const [healthCardNumber, setHealthCardNumber] = useState('');
   const [error, setError] = useState(null);
   const [patientData, setPatientData] = useState(null);
-  const [patientAge, setPatientAge] = useState(null); // Store age
+  // const [patientAge, setPatientAge] = useState(null); // Store age
   const navigate = useNavigate();
 
   // Function to calculate age based on date of birth
@@ -35,7 +35,7 @@ function Dashboard() {
     e.preventDefault();
     setError(null);
     setPatientData(null);
-    setPatientAge(null);
+    // setPatientAge(null);
     try {
       const patientRef = collection(db, 'Patients');
       const q = query(patientRef, where('patientId', '==', healthCardNumber)); // Change query to search by health card number
@@ -51,10 +51,10 @@ function Dashboard() {
         setPatientData(patient);
 
         // Calculate age based on the 'dateOfBirth' field
-        if (patient.dateOfBirth) {
-          const age = calculateAge(patient.dateOfBirth);
-          setPatientAge(age);
-        }
+        // if (patient.dateOfBirth) {
+        //   const age = calculateAge(patient.dateOfBirth);
+        //   setPatientAge(age);
+        // }
       } else {
         setError('No patient found with this health card number.');
       }
@@ -93,11 +93,11 @@ function Dashboard() {
         {error && <p style={{ color: 'red' }}>{error}</p>}
 
         {patientData && (
-          <div className="patient-details">
-            <h2>PATIENT DETAILS</h2>
+          <div className="patient-detailsph">
+            <h2 className="topic">PATIENT DETAILS</h2>
             <p><strong>Name</strong>: {patientData.Name}</p>
             <p><strong>Health card number</strong>: {patientData.patientId}</p>
-            <p><strong>Age</strong>: {patientAge ? patientAge : 'N/A'}</p> {/* Display calculated age */}
+            {/* <p><strong>Age</strong>: {patientAge ? patientAge : 'N/A'}</p> Display calculated age */}
             <p><strong>Gender</strong>: {patientData.gender}</p>
             <button 
               className="btn btn-primary phbtn"

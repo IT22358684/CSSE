@@ -1,0 +1,86 @@
+.claim-container {
+    padding: 20px;
+  }
+  
+  .claims-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  .claims-table th, .claims-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .claims-table th {
+    background-color: #031c36;
+    color: white;
+  }
+  
+  .claims-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .claims-table tr:hover {
+    background-color: #ddd;
+    cursor: pointer;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px;
+    text-align: center;
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 20px;
+  }
+  
+  .modal-content label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .modal-content select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .modal-actions button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .modal-actions button:first-of-type {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .modal-actions button:last-of-type {
+    background-color: #dc3545;
+    color: white;
+  }
+  
